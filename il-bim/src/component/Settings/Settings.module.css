@@ -1,0 +1,47 @@
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 100vh;
+    color: #fcfcfc !important;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+  }
+ 
+  .setting{
+    color: #ffffff !important;;
+  }
+  .setting {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .label {
+    font-size: 18px;
+  }
+  
+  .link {
+    margin-left: auto;
+    color: #007bff; /* Colore del link */
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+      
+  .sidebar{
+    top: 400px;
+
+  
+    
+  }

@@ -1,0 +1,120 @@
+.pageContainer {
+     margin-top: 10%!important;
+    height: 80%; /* Modificato da 40% a 80% per coprire più spazio verticalmente */
+    width: 70%!important; /* Larghezza del container */
+    margin: auto; /* Centra il container orizzontalmente e verticalmente */
+    display: flex; /* Usa Flexbox per allineare i contenuti */
+    flex-direction: column; /* Imposta la direzione dei flex items */
+    justify-content: center; /* Centra i contenuti verticalmente */
+    align-items: center; /* Centra i contenuti orizzontalmente */
+    
+}
+.iconTray span {
+    font-size: 24px; /* Regola la dimensione delle icone */
+    color: #c46111; /* Colore base dell'icona, cambia a piacimento */
+    text-shadow: 0 0 10px rgb(165, 126, 68), 0 0 20px rgb(206, 187, 77); /* Effetto luminescente */
+    margin: 10px; /* Spaziatura tra le icone */
+    transition: color 0.3s ease; /* Transizione fluida del colore */
+  }
+  
+  .iconTray span:hover {
+    color: #FFFFFF; /* Colore al passaggio del mouse */
+    cursor: pointer;
+  }
+  .iconTray {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permette agli elementi di andare a capo */
+    gap: 40px;
+    font-size: 24px;
+  }
+.cardWrapper {
+    width: 100%; /* Larghezza della card mantenuta al 100% del suo container */
+    margin-bottom: 1rem; /* Margine inferiore */
+    height: 450px; /* Altezza fissa per tutte le card */
+    overflow: hidden; /* Nasconde il contenuto in eccesso */
+    transition: transform 0.3s ease; /* Transizione per l'effetto di allargamento */
+    position: relative; /* Impostato su relative per permettere la corretta transizione e sovrapposizione */
+}
+.title {
+    font-size: 20px; /* Dimensione del testo del titolo */
+    font-weight: 600; /* Grassetto */
+    color: chocolate;
+}
+.username{
+    font-size: 20px; /* Dimensione del testo del titolo */
+    font-weight: 600; /* Grassetto */
+    color: chocolate;
+}
+.card {
+    border-radius: 8px; /* Bordi arrotondati */
+    background-color: rgb(15, 14, 11)!important; /* Sfondo */
+    overflow: hidden; /* Nasconde il contenuto in eccesso */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transizioni per ombra e trasformazione */
+    width: 100%; /* Larghezza della card */
+   
+}
+
+.card:hover, .cardActive {
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.8); /* Ombra più evidente */
+    transform: scale(1); /* Effetto di allargamento */
+    background-color: rgba(11, 11, 11, 0.8); /* Sfondo modificato al hover */
+    z-index: 1; /* Aumenta lo z-index al hover per mantenere la card sopra le altre */
+}
+
+.cardImage {
+    width: 100%; /* Larghezza dell'immagine */
+    height: 200px; /* Altezza fissa dell'immagine */
+    object-fit: cover; /* Riempie completamente lo spazio disponibile senza distorsioni */
+    border-radius: 8px 8px 0 0; /* Bordi arrotondati solo in alto */
+}
+
+.cardActive .cardImage {
+    height: 350px; /* Altezza maggiore dell'immagine per mostrare l'immagine intera */
+}
+
+/* Altri stili rimangono invariati */
+
+.socialIcons i {
+    margin-right: 20px; /* Spazio tra le icone */
+    color: #d2691e; /* Colore di base delle icone */
+    cursor: pointer; /* Rende le icone cliccabili */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transizione per colore e shadow */
+     font-size: 24px; /* Regola la dimensione dell'icona */
+}
+
+.socialIcons i:hover {
+    color: rgb(241, 14, 226); /* Cambia il colore al passaggio del mouse in azzurro brillante */
+    text-shadow: 0 0 8px rgb(241, 14, 226), 0 0 20px rgb(241, 14, 226); /* Effetto glow azzurro */
+   
+}
+.iconCamel {
+    margin-right: 20px; /* Spazio tra le icone */
+    cursor: pointer; /* Rende le icone cliccabili */
+    transition: filter 0.3s ease; /* Transizione per gli effetti di filtro */
+    width: 36px; /* Regola la dimensione dell'icona */
+    height: 36px;
+    position: relative;
+}
+
+.iconCamel:hover {
+    filter: drop-shadow(0 0 8px rgb(241, 14, 226)) brightness(1.2); /* Aggiunge un'ombra e aumenta la luminosità */
+}
+
+.styles.cameClicked {
+    filter: brightness(150%) drop-shadow(0 0 10px limegreen)contrast(120%); /* Effetto colore verde fluo */
+}
+
+.camelClicked::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: limegreen;
+    opacity: 0.5;
+    z-index: 1;
+}

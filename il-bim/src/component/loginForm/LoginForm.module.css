@@ -1,0 +1,51 @@
+/* LoginForm.module.css */
+.container{
+    background-color:rgba(10, 31, 114, 0.446) var(--bs-card-bg) ; /* Colore di sfondo */
+    border-radius: 20px;
+    position: absolute;
+  display: flex;
+flex-direction: column; 
+}
+
+.textLong {
+    letter-spacing: 15px; /* Aggiungi spaziatura tra le lettere per allungare il testo */
+}
+.logincard{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60%;
+  
+}
+
+
+.cardbodyColor{
+  height: 100%;
+    background-color:rgba(10, 31, 114, 0.446) var(--bs-card-bg) ; /* Colore di sfondo */
+    border-radius: 20px;
+    position: absolute;
+  display: flex;
+flex-direction: column;
+justify-content: center;
+  align-items: center;
+  margin-top: 60%;
+margin-left: auto;
+  margin-right: auto;
+  
+
+}
+card-body{
+    background-color:rgba(10, 31, 114, 0.446) var(--bs-card-bg) ; /* Colore di sfondo */
+    position: absolute;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+    align-items: center;
+    margin-top: 30%;
+  margin-left: auto;
+    margin-right: auto;
+}
+
+.px-5{
+    background-color: #fff0 !important;; /* Colore di sfondo */
+    border-radius: 20px;
+}
