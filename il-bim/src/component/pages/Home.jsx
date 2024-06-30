@@ -1,13 +1,8 @@
 import React from 'react'
-import MainLayout from '../layouts/MainLayout'
-import MainContent from '../HomePage/MainContent'
-import { jwtDecode } from "jwt-decode";
-
+import MainLayout from './MainLayout'
+import MainContent from './MainContent'
 
 const Home = () => {
-    const session = JSON.parse(localStorage.getItem('auth'))
-    const decodedSession = jwtDecode(session)
-
     return (
         <MainLayout>
             <MainContent />
