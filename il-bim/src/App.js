@@ -28,7 +28,7 @@ function App() {
     <Routes>
         <Route exact path="/HOME" element={<Home/>} />
         
-        <Route element={<ProtectedRoutes/>}>
+        
             <Route path="/Home" element={<Home />} />
             <Route path="/feedback" element={<AddComment />} />
             <Route path="/galleria" element={<Gallery />} />
@@ -43,7 +43,7 @@ function App() {
                   <Route path="/PrivacySettings" element={<PrivacySettings/>} />
                   <Route path="/contatti" element={<Contatti/>} />
                   <Route path="*" element={<NotFound />} />
-          </Route>
+         
           </Routes>
       </Router>
   )
