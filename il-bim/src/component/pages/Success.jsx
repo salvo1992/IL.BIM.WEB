@@ -1,10 +1,10 @@
 import React from 'react';
 import MainLayout from '../layouts/MainLayout';
-
+import MainContent from '../HomePage/MainContent';
 const Success = () => {
     return (
         <MainLayout>
-            {/* Inserisci qui eventuali componenti aggiuntivi se necessari */}
+          <MainContent />
         </MainLayout>
     );
 };
