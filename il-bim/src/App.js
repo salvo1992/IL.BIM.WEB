@@ -26,7 +26,7 @@ function App() {
   return (
     <Router>
     <Routes>
-        <Route exact path="/" element={<Success/>} />
+        <Route exact path="/" element={<Home/>} />
         <Route path="/success" element={<Home />}/>
         <Route element={<ProtectedRoutes/>}>
             <Route path="/Home" element={<Home />} />

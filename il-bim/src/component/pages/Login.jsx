@@ -14,7 +14,7 @@ const Login = () => {
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-5 col-lg-5 loginContainer">
                         <h2 className="text-center mt-5 loginHeader">
-                            CamelNetwork Login
+                            ILBim Web Login
                                Benvenuti
                         </h2>
                         <div className={Styles.login}>
