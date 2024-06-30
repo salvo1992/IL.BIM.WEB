@@ -27,7 +27,7 @@ function App() {
     <Router>
     <Routes>
         <Route exact path="/" element={<Home/>} />
-        <Route path="/success" element={<Home />}/>
+        
         <Route element={<ProtectedRoutes/>}>
             <Route path="/Home" element={<Home />} />
             <Route path="/feedback" element={<AddComment />} />
