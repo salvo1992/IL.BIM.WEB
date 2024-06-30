@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import styles from './MainContent.module.css';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 import ErrorAlert from '../alerts/errorAlert';
-import useSession from '../hooks/useSession';
+
 import { useRef, useState } from 'react';
 
 const MainContent = () => {
-    const isAuthenticated = useSession();
+    
     const isLoadingRef = useRef(false);
 
     const [isLoading, setIsLoading] = useState(false);
