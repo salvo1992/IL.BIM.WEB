@@ -19,7 +19,6 @@ import '../src/component/axios';
 import AddComment from '../src/component/comments/AddComment';
 import WorkWithUs from '../src/component/lavora con noi//WorkWithUs';
 import Gallery from '../src/component/gallery/Gallery';
-import MainContent from './component/HomePage/MainContent';
 
 
 function App() {
@@ -28,9 +27,9 @@ function App() {
     <Router>
     <Routes>
         <Route exact path="/" element={<Success/>} />
-        <Route path="/success" element={<Success />}/>
+        <Route path="/success" element={<Home />}/>
         <Route element={<ProtectedRoutes/>}>
-            <Route path="/Home" element={<MainContent />} />
+            <Route path="/Home" element={<Home />} />
             <Route path="/feedback" element={<AddComment />} />
             <Route path="/galleria" element={<Gallery />} />
             <Route path="/lavora con noi" element={<WorkWithUs />} />
