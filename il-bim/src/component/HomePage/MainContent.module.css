@@ -11,8 +11,8 @@
 }
 .iconTray span {
     font-size: 24px; /* Regola la dimensione delle icone */
-    color: #c46111; /* Colore base dell'icona, cambia a piacimento */
-    text-shadow: 0 0 10px rgb(165, 126, 68), 0 0 20px rgb(206, 187, 77); /* Effetto luminescente */
+    color: #357cd8; /* Colore base dell'icona, cambia a piacimento */
+    text-shadow: 0 0 1px rgb(250, 249, 247), 0 0 2px rgb(247, 247, 242); /* Effetto luminescente */
     margin: 10px; /* Spaziatura tra le icone */
     transition: color 0.3s ease; /* Transizione fluida del colore */
   }
@@ -79,7 +79,7 @@
 
 .socialIcons i {
     margin-right: 20px; /* Spazio tra le icone */
-    color: #d2691e; /* Colore di base delle icone */
+    color: #1b7fdd; /* Colore di base delle icone */
     cursor: pointer; /* Rende le icone cliccabili */
     transition: color 0.3s ease, text-shadow 0.3s ease; /* Transizione per colore e shadow */
      font-size: 24px; /* Regola la dimensione dell'icona */
@@ -117,4 +117,71 @@
     background-color: limegreen;
     opacity: 0.5;
     z-index: 1;
+}
+
+
+
+
+/* src/components/MainContent.module.css */
+.pageContainer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.iconTray {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner {
+    width: 80%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.bannerImages {
+    width: 100%;
+    height: auto;
+}
+
+.banner1 {
+    width: 50%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.bannerImage1 {
+    width: 50%;
+    height: auto;
+    max-width: 1200px; /* Imposta una larghezza massima per l'immagine */
+}
+
+.section {
+    width: 100%;
+    background-color: #1a1919;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    color: #d6c1c1;
+    margin-bottom: 10px;
+}
+
+.text {
+    color: #a19999;
+    line-height: 1.6;
+}
+.inlineImages{
+    height: 300px;
+    width: 600px;
 }

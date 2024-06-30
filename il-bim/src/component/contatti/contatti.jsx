@@ -4,20 +4,20 @@ const Contatti = () => {
     return (
         <div className={Styles.contattiPage}>
         <div className={Styles.container}>
-            <h1>CamelNetwork</h1>
+            <h1>IL BIM NETWORK</h1>
           <h1>Contattaci</h1>
           <div className={Styles.contattiContent}>
             <div className={Styles.contattiInfo}>
               <h2>Informazioni di contatto</h2>
               <p>Se hai bisogno di assistenza o hai domande, non esitare a contattarci.</p>
               <ul>
-                <li>Email: info@azienda.com</li>
+                <li>Email: info@IL-BIM.com</li>
                 <li>Telefono: +1234567890</li>
                 <li>Indirizzo: Via delle Rose, 123, Città</li>
               </ul>
             </div>
             <div className={Styles.contattiImage}>
-              <img src="https://img.freepik.com/premium-photo/camel-wearing-jacket-with-word-camel-it_919652-1275.jpg"alt="Contatti" />
+              <img src="assets/il bim5.avif"alt="Contatti" />
             </div>
           </div>
           <div className={Styles.contattiForm}>

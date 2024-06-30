@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useSession from "../hooks/useSession";
-
+import styles from "../layouts/MainLayout.module.css"
 import { Link } from "react-router-dom";
 import "./NavigationBar.scss"; // Assicura di avere il percorso corretto
 
@@ -42,6 +42,7 @@ const NavigationBar = () => {
                 height="70" // Dimensione ridotta per l'immagine
                 className="d-inline-block align-text-top rounded-circle"
               />
+              
               <span className="camel-text">BIM Network</span>
             </Link>
 

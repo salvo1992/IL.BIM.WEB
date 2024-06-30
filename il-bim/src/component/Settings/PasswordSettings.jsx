@@ -24,7 +24,7 @@ function PasswordSettings() {
           </form>
         </div>
         <div className={styles.imageContainer}>
-          <img src="https://img.freepik.com/premium-photo/camel-wearing-jacket-with-word-camel-it_919652-1275.jpg" alt="Password" className={styles.image} />
+          <img src="assets/IL BIM 6.jpg" alt="Password" className={styles.image} />
         </div>
       </div>
     </div>

@@ -1,150 +1,91 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+// src/components/MainContent.js
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './MainContent.module.css';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 import ErrorAlert from '../alerts/errorAlert';
 import useSession from '../hooks/useSession';
-import { nanoid } from '@reduxjs/toolkit';
-import styles from './MainContent.module.css';
-import useAuthToken from '../hooks/useAuthToken'; // Assicurati che il percorso sia corretto
-import UserProfile from '../UserProfile/UserProfile';
-import { Link } from 'react-router-dom';
+import { useRef, useState } from 'react';
 
 const MainContent = () => {
-    const token = useAuthToken(); // Recupera il token con il hook personalizzato
     const isAuthenticated = useSession();
     const isLoadingRef = useRef(false);
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
-    const [newPosts, setNewPosts] = useState([]);
-    const [page, setPage] = useState(1);
-    const [hasMore, setHasMore] = useState(true);
-    const [activeCardId, setActiveCardId] = useState(null);
-    const [isCamelClicked, setIsCamelClicked] = useState(false);  // Nuovo stato per tracciare il clic sull'icona del cammello
-    const [clicked, setClicked] = useState(false);
-    const handleCamelClick = (e) => {
-        e.stopPropagation();  // Previene la propagazione dell'evento al clic della card
-        setIsCamelClicked(true);  // Imposta lo stato dell'icona del cammello come cliccato
-    };
-
-
-
-   // Funzione modificata per il clic della card
-const handleCardClick = useCallback((id, event) => {
-    if (!isCamelClicked) {  // Controlla se il clic non è sull'icona del cammello
-        setActiveCardId(prevId => prevId === id ? null : id);
-    }
-}, [isCamelClicked]);
-    
-
-    const loadPosts = useCallback(async () => {
-        if (!hasMore || isLoadingRef.current) return;
-        isLoadingRef.current = true;
-        setIsLoading(true);
-        try {
-            const response = await fetch(
-                `${process.env.REACT_APP_SERVER_BASE_URL}/newpost?page=${page}&pageSize=30`,
-                {
-                    method: 'GET',
-                    headers: {
-                        'Content-type': 'application/json',
-                        "authorization": `Bearer ${token}`, // Usa il token dal hook
-                    },
-                }
-            );
-            const data = await response.json();
-            if (Array.isArray(data.newposts)) {
-                console.log(data.newposts);  // Controlla i dati ricevuti
-                const existingIds = new Set(newPosts.map(post => post.id));
-                const filteredNewPosts = data.newposts.filter(post => !existingIds.has(post.id));
-                setNewPosts(prev => [...prev, ...filteredNewPosts]);
-                setHasMore(data.newposts.length === 30);
-            } else {
-                setError("Errore: newposts non è un array");
-            }
-        } catch (e) {
-            setError(e.message);
-        } finally {
-            setIsLoading(false);
-            isLoadingRef.current = false;
-        }
-    }, [hasMore, isLoadingRef, page, token, newPosts]); // Aggiunto token alle dipendenze
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.offsetHeight && !isLoadingRef.current) {
-                setPage(prev => prev + 1);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [isLoadingRef]);
-
-    useEffect(() => {
-        loadPosts();
-    }, [loadPosts]);
-    
 
     return (
         <div className={`container pt-5 pb-5 ${styles.pageContainer}`}>
-        <div className="row">
-        <div className={styles.iconTray}>
-     <Link to="/Userprofile"><span className="fas fa-user"></span></Link> {/* Icona utente */}
-    <Link to="/Camelfriend"><span className="fas fa-users"></span></Link> {/* Icona gruppo utenti */}
-    <Link to="/Camelartist"><span className="fas fa-paint-brush"></span></Link> {/* Icona pittura */}
-    <Link to="/Camelchat"><span className="fas fa-comments"></span></Link> {/* Icona chat */}
+            <div className="row">
+                <div className={styles.iconTray}>
+                <Link to="/Userprofile"><span className="fas fa-user"></span></Link> {/* Icona utente */}
+    <Link to="/progetti futuri "><span className="fas fa-project-diagram"></span></Link> {/* progetti futuri  */}
+    <Link to="/lavora con noi "><span className="fas fa-briefcase"></span></Link> {/* lavora con noi  */}
+    <Link to="/feedback"><span className="fas fa-comment-dots"></span></Link> {/* feedback */}
     <Link to="/settings"><span className="fas fa-cog"></span></Link> {/* Icona ingranaggio */}
-    <Link to="/#"><span className="fas fa-door-open"></span></Link> {/* Icona porta */}
-    <Link to="/walk"><span className="fas fa-walking"></span></Link> {/* Icona passi */}
+    <Link to="/Home"><span className="fas fa-home"></span></Link> {/* Icona HOME */}
     <Link to="/notificationsSettings"><span className="fas fa-bell"></span></Link> {/* Icona campanello */}
-    <Link to="/CamelMusic"><span className="fas fa-music"></span></Link> {/* Icona matita */}
- 
-            </div>
+    <Link to="/Galleria"><span className="fas fa-camera"></span></Link> {/* Icona galleria */}
+    <Link to="/#"><span className="fas fa-door-open"></span></Link> {/* Icona porta */}
+                </div>
 
-
-            {isLoading && <LoadingIndicator />}
-            {error && <ErrorAlert message="Oops! Qualcosa è andato storto durante il caricamento dei dati" />}
-            {isAuthenticated && !isLoading && !error && newPosts.map((post) => {
-                const formattedDate = new Date(post.createdAt).toLocaleDateString('it-IT');
-                return (
-                    <div key={nanoid()} className={`col-12 col-md-6 col-lg-4 col-xl-3 mb-3 ${styles.cardWrapper} ${post.id === activeCardId ? styles.cardActive : ''}`} onClick={() => handleCardClick(post.id)}>
-                        <div className={`card ${styles.card}`}>
-                            <img src={post.cover} className={`card-img-top ${styles.cardImage}`} alt="Cover" />
-                            <div className={`card-body ${styles.cardBody}`}>
-                                <h2 className={styles.title}>{post.title}</h2>
-                                <p className={`card-text ${styles.description}`}>{post.description}</p>
-                                <div className={styles.socialIcons}>
-                                <img 
-    src='/assets/icons8-camel-64 (1).png' 
-    className={`${styles.iconCamel} ${isCamelClicked ? styles.cameClicked : ''}`} 
-    alt="Camel Icon" 
-    width="36" 
-    height="36" 
-      onClick={() => setClicked(!clicked)}
-            style={{ cursor: 'pointer' }}
-/>
-                                    <i className="fas fa-comments"></i>
-                                    <i className="fas fa-share-nodes"></i>
-                                    <i className="fas fa-bookmark"></i>
-                                </div>
-                                <p className={`card-text ${styles.date}`}>Data di creazione: {formattedDate}</p>
-                            </div>
-                            
-                            <div className={`card-footer ${styles.cardFooter}`}>
-                                <p className={styles.username}>{post.firstName} {post.lastName || 'Non trovato'}</p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                   
-                );
-            })}
-        </div>
+                {isLoading && <LoadingIndicator />}
+                {error && <ErrorAlert message="Oops! Qualcosa è andato storto durante il caricamento dei dati" />}
+                
+                <div className={styles.container}>
+    <div className={styles.banner}>
+        <img className={styles.bannerImages} src="/assets/BANNER BIM.webp" alt="Banner" />
     </div>
-    )    
-}
+    <div className={styles.section}>
+        <h2 className={styles.title}>Come i gemelli digitali possono rendere gli edifici più intelligenti</h2>
+        <p className={styles.text}>
+            Un gemello digitale è un modello virtuale di un bene fisico, prodotto o sistema. Questo rappresenta l'equivalente nel mondo virtuale di un bene nel mondo fisico. Questo può essere utilizzato per monitorare, analizzare e simulare il comportamento del bene fisico virtualmente.
+        </p>
+        <img className={styles.inlineImages} src="/assets/il bim5.avif" alt="Descrizione Immagine 1" />
+        <p className={styles.text}>
+            La creazione di un gemello digitale consente di usare le attuali tecnologie digitali dell’Internet delle Cose (IoT), intelligenza artificiale e analisi avanzate dei dati per raccogliere informazioni dal mondo reale e usarle in simulazioni, scenario e manutenzione predittiva. Uno degli obiettivi di un gemello digitale è migliorare le operazioni e la manutenzione dell’edificio, riducendo i costi e migliorando l’efficienza e la sicurezza. In questo contesto, le tecnologie emergenti come il 5G saranno fondamentali per abilitare le reti digitali più utili.
+        </p>
+        <img className={styles.inlineImage} src="/assets/il bim 3.jpeg" alt="Descrizione Immagine 2" />
+    </div>
+    <div className={styles.section}>
+        <h2 className={styles.title}>Creazione di un gemello digitale di un edificio</h2>
+        <p className={styles.text}>
+            La prima fase per creare un gemello digitale di un edificio è la creazione di un modello BIM. L'edificio e i suoi sistemi sono modellati in 3D per una rappresentazione completa. Questo include non solo la struttura fisica dell'edificio ma anche i sistemi interni come gli impianti meccanici, elettrici e idraulici.
+        </p>
+        <img className={styles.inlineImage} src="/assets/bim 1.webp" alt="Descrizione Immagine 3" />
+        <p className={styles.text}>
+            Una volta creato il modello BIM, è possibile arricchirlo con sensori IoT. I dati raccolti dai sensori forniscono informazioni in tempo reale sulle condizioni dell'edificio, consentendo ai gestori di monitorare e controllare i sistemi in modo più efficiente.
+        </p>
+        <img className={styles.inlineImage} src="/assets/IL BIM 6.jpg" alt="Descrizione Immagine 4" />
+    </div>
+    <div className={styles.section}>
+        <h2 className={styles.title}>Applicazioni dei gemelli digitali</h2>
+        <p className={styles.text}>
+            I gemelli digitali apportano numerosi vantaggi nelle operazioni e nella gestione degli edifici e dei sistemi energetici. Possono essere usati per ottimizzare l'uso delle risorse energetiche, monitorare le condizioni degli impianti e prevedere eventuali guasti.
+        </p>
+        <img className={styles.inlineImage} src="/assets/il bim coefficente energetico.jpeg" alt="Descrizione Immagine 5" />
+        <p className={styles.text}>
+            I gemelli digitali trovano applicazione non solo nella gestione degli edifici, ma anche in molti altri settori, come la gestione delle infrastrutture, l’industria manifatturiera, la sanità e i trasporti. Ad esempio, i gemelli digitali possono essere usati per simulare il comportamento di macchinari industriali, monitorare la condizione di ponti e strade e migliorare l'efficienza dei processi produttivi.
+        </p>
+        <img className={styles.inlineImages} src="/assets/il bim infrastrutture.jpg" alt="Descrizione Immagine 6" />
+    </div>
+    <div className={styles.section}>
+        <h2 className={styles.title}>Conclusione</h2>
+        <p className={styles.text}>
+            Un gemello digitale offre vantaggi significativi nella gestione e manutenzione degli edifici. Permette di prendere decisioni informate basate su dati reali, migliorando l'efficienza, riducendo i costi e aumentando la sicurezza. Le tecnologie emergenti come il 5G e l'IoT sono fondamentali per il successo dei gemelli digitali, fornendo le reti digitali e i sensori necessari per raccogliere e analizzare i dati in tempo reale.
+        </p>
+        <img className={styles.inlineImages} src="/assets/il bim city.avif" alt="Descrizione Immagine 7" />
+    </div>
+</div>
 
-export default MainContent
+            </div>
+        </div>
+    );
+};
+
+export default MainContent;
+
 
 
 

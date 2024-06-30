@@ -7,7 +7,7 @@
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-   background-color: rgb(244, 218, 191);
+   background-color: rgb(14, 123, 224);
   }
   
   .setting {
@@ -27,7 +27,7 @@
   
   .link {
     margin-left: auto;
-    color: #007bff;
+    color: #f6f7f5;
     text-decoration: none;
   }
   
@@ -56,7 +56,7 @@
   }
   .description {
     padding: 20px;
-    background-color: #F4A460; /* Colore sabbia */
+    background-color: #60a5f4; /* Colore sabbia */
     margin-top: 20px;
     border-radius: 10px;
   }

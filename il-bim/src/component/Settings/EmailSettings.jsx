@@ -16,7 +16,7 @@ function EmailSettings() {
           </form>
         </div>
         <div className={styles.imageContainer}>
-          <img src="https://img.freepik.com/premium-photo/camel-wearing-jacket-with-word-camel-it_919652-1275.jpg" alt="Email" className={styles.image} />
+          <img src="assets/IL BIM 6.jpg" alt="Email" className={styles.image} />
         </div>
       </div>
     </div>
