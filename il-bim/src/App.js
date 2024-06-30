@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+
 import './App.css'
 import Home from '../src/component/pages/Home';
 import Login from '../src/component/pages/Login';
@@ -26,28 +26,28 @@ function App() {
   return (
     <Router>
     <Routes>
-    <Route path="/" element={<Navigate to="/Home" replace />} />
-                {/* Questo assicura che "/" reindirizzi a "/Home" */}
-                
-                <Route path="/Home" element={<Home />} />
+        <Route exact path="/" element={<Success />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/feedback" element={<AddComment />} />
+        <Route path="/galleria" element={<Gallery />} />
+        <Route path="/lavora con noi" element={<WorkWithUs />} />
+        <Route path="/Settings" element={<Settings />} />
+        <Route path="/ProfileSettings" element={<ProfileSettings />} />
+        <Route path="/EmailSettings" element={<EmailSettings />} />
+        <Route path="/PasswordSettings" element={<PasswordSettings />} />
+        <Route path="/LanguageSettings" element={<LanguageSettings />} />
+        <Route path="/NotificationsSettings" element={<NotificationsSettings />} />
+        <Route path="/PrivacySettings" element={<PrivacySettings />} />
+        <Route path="/contatti" element={<Contatti />} />
+        <Route path="*" element={<NotFound />} />
 
-                <Route element={<ProtectedRoutes />}>
-                    <Route path="/feedback" element={<AddComment />} />
-                    <Route path="/galleria" element={<Gallery />} />
-                    <Route path="/lavora con noi" element={<WorkWithUs />} />
-                    <Route path="/UserProfile" element={<UserProfile />} />
-                    <Route path="/Settings" element={<Settings />} />
-                    <Route path="/ProfileSettings" element={<ProfileSettings />} />
-                    <Route path="/EmailSettings" element={<EmailSettings />} />
-                    <Route path="/PasswordSettings" element={<PasswordSettings />} />
-                    <Route path="/LanguageSettings" element={<LanguageSettings />} />
-                    <Route path="/NotificationsSettings" element={<NotificationsSettings />} />
-                    <Route path="/PrivacySettings" element={<PrivacySettings />} />
-                    <Route path="/contatti" element={<Contatti />} />
-                    <Route path="*" element={<NotFound />} />
-                </Route>
-          </Routes>
-      </Router>
+        {/* Rotta protetta per UserProfile */}
+        <Route element={<ProtectedRoutes />}>
+            <Route path="/UserProfile" element={<UserProfile />} />
+        </Route>
+    </Routes>
+</Router>
   )
 }
   export default App
