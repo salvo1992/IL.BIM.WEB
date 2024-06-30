@@ -40,8 +40,7 @@ function App() {
         <Route path="/PrivacySettings" element={<PrivacySettings />} />
         <Route path="/contatti" element={<Contatti />} />
         <Route path="*" element={<NotFound />} />
-
-        {/* Rotta protetta per UserProfile */}
+         {/* Rotta protetta per UserProfile */}
         <Route element={<ProtectedRoutes />}>
             <Route path="/UserProfile" element={<UserProfile />} />
         </Route>
