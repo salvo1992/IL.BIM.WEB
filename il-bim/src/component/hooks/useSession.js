@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwtDecode';
 
 const useSession = () => {
     const session = JSON.parse(localStorage.getItem('auth'));
