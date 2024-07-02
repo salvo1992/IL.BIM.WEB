@@ -1,7 +1,5 @@
-
-import './App.css'
+import './App.css';
 import Home from '../src/component/pages/Home';
-import Login from '../src/component/pages/Login';
 import ProtectedRoutes from "../src/component/middlewares/ProtectedRoutes";
 import Success from "../src/component/pages/Success";
 import Settings from '../src/component/Settings/Settings';
@@ -13,19 +11,17 @@ import NotificationsSettings from '../src/component/Settings/NotificationsSettin
 import PrivacySettings from '../src/component/Settings/PrivacySettings';
 import Contatti from '../src/component/contatti/contatti';
 import UserProfile from '../src/component/UserProfile/UserProfile';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import NotFound from '../src/component/not found 404/NotFound'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NotFound from '../src/component/not found 404/NotFound';
 import '../src/component/axios';
 import AddComment from '../src/component/comments/AddComment';
 import WorkWithUs from '../src/component/lavora con noi//WorkWithUs';
 import Gallery from '../src/component/gallery/Gallery';
 
-
 function App() {
- 
   return (
     <Router>
-    <Routes>
+      <Routes>
         <Route exact path="/" element={<Success />} />
         <Route path="/home" element={<Home />} />
         <Route path="/feedback" element={<AddComment />} />
@@ -40,12 +36,14 @@ function App() {
         <Route path="/PrivacySettings" element={<PrivacySettings />} />
         <Route path="/contatti" element={<Contatti />} />
         <Route path="*" element={<NotFound />} />
-         {/* Rotta protetta per UserProfile */}
+        
+        {/* Rotta protetta per UserProfile */}
         <Route element={<ProtectedRoutes />}>
-            <Route path="/UserProfile" element={<UserProfile />} />
+          <Route path="/UserProfile" element={<UserProfile />} />
         </Route>
-    </Routes>
-</Router>
-  )
+      </Routes>
+    </Router>
+  );
 }
-  export default App
+
+export default App;
